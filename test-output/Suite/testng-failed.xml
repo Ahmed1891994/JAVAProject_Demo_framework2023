@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Smoke(failed)">
+    <classes>
+      <class name="tests.RegistrationTests">
+        <methods>
+          <include name="teardown"/>
+          <include name="RegistrationSuccessfully"/>
+          <include name="setupClass"/>
+        </methods>
+      </class> <!-- tests.RegistrationTests -->
+      <class name="tests.LoginPageTests">
+        <methods>
+          <include name="teardown"/>
+          <include name="VerifyFailedLoginUsingWrongPassword"/>
+          <include name="VerifyLoginSuccessfully"/>
+          <include name="setupClass"/>
+          <include name="VerifyFailedLoginUsingWrongEmail"/>
+        </methods>
+      </class> <!-- tests.LoginPageTests -->
+    </classes>
+  </test> <!-- Smoke(failed) -->
+</suite> <!-- Failed suite [Suite] -->
