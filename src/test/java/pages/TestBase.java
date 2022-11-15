@@ -21,7 +21,7 @@ public class TestBase {
     @BeforeTest
     public void setupClass() {
     	BrowserFactoryManager browserfactorymanager = new BrowserFactoryManager();
-    	setDriverManager(browserfactorymanager.get("Firefox"));
+    	setDriverManager(browserfactorymanager.get("FireFox"));
     	setDriver(getDriverManager().getDriver());
         driverActions = new DriverActions(getDriver());
         getDriver().manage().window().maximize();
