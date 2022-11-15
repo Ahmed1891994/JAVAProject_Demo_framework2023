@@ -31,7 +31,7 @@ public class TestBase {
 
     @AfterTest
     public void teardown() {
-    	//driverActions.closeAllWindows();
+    	driverActions.closeAllWindows();
     }
     
     private void setDriver(WebDriver driver)
