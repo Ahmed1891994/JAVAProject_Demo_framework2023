@@ -15,7 +15,6 @@ node {
         }
     }
     stage('Results') {
-        testng '**/target/surefire-reports/TEST-*.xml'
-        archiveArtifacts 'target/*.jar'
+       testNG(reportFilenamePattern: '**/test-results.xml')
     }
 }
