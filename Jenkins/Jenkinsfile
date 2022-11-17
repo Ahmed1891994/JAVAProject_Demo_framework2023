@@ -15,6 +15,6 @@ node {
         }
     }
     stage('Results') {
-       testNG(reportFilenamePattern: '**/testng_results.xml')
+       testNG(reportFilenamePattern: '**/testng-results.xml')
     }
 }
