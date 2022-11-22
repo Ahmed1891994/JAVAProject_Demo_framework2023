@@ -24,6 +24,7 @@ public class RegisterPage extends TestBase{
 
 	public void Register()
 	{	
+		
 		if(fakeruser.getMalefemale_status().equals("m"))
 			driverActions.clickOn(male_Rdbtn);
 		else

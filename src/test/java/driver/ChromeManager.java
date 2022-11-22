@@ -2,13 +2,23 @@ package driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ChromeManager extends BrowserFactory{
 	@Override
-	public WebDriver Driversetup() {
+	protected WebDriver Driversetup() {
 		WebDriverManager.chromedriver().setup();
-		return new ChromeDriver();
+		return new ChromeDriver(getOptions());
 	}
+	
+	@Override
+	protected ChromeOptions getOptions() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--disable-infobars");
+        chromeOptions.addArguments("--disable-notifications");
+        return chromeOptions;
+    }
 }

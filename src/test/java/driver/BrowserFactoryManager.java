@@ -14,7 +14,7 @@ public class BrowserFactoryManager {
 	{
 		map.put("Chrome",Chrome);
 		map.put("Edge",Edge);
-		map.put("Firefox",Firefox);
+		map.put("Firefox",Firefox);	
 	}
 	
 	public BrowserFactory get(String language)
