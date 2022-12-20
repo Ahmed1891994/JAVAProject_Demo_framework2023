@@ -19,6 +19,7 @@ public class FireFoxManager extends BrowserFactory{
 		firefoxoptions.addArguments("--start-maximized");
 		firefoxoptions.addArguments("--disable-infobars");
 		firefoxoptions.addArguments("--disable-notifications");
+		firefoxoptions.addPreference("dom.disable_open_during_load", true);
         return firefoxoptions;
 	}
 }

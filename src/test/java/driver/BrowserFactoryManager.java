@@ -20,5 +20,6 @@ public class BrowserFactoryManager {
 	public BrowserFactory get(String language)
 	{
 		return map.get(language);
+
 	}
 }

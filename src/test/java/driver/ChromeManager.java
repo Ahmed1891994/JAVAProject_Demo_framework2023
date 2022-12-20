@@ -1,5 +1,7 @@
 package driver;
 
+import java.util.Arrays;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,6 +21,7 @@ public class ChromeManager extends BrowserFactory{
         chromeOptions.addArguments("--start-maximized");
         chromeOptions.addArguments("--disable-infobars");
         chromeOptions.addArguments("--disable-notifications");
+        chromeOptions.setExperimentalOption("excludeSwitches",Arrays.asList("disable-popup-blocking"));
         return chromeOptions;
     }
 }

@@ -2,36 +2,54 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import io.qameta.allure.Step;
+
 public class LoginPage extends TestBase{
-	By email_fld = By.id("Email");
-	By password_fld = By.id("Password");
-	By rememberme_chx = By.id("RememberMe");
-	By forgot_password_lnk = By.className("forgot-password");
-	By login_button_lnk = By.className("login-button");
-	By wronglogin_txt = By.className("message-error");
-	public void setEmail(String email)
+	By username_fld = By.id("username");
+	By password_fld = By.id("password");
+	By login_btn = By.className("fa-sign-in");
+	
+	By green_alrt = By.id("flash");
+	By page_hdr = By.xpath("//h2[normalize-space()='Login Page']");
+	
+	@Step("set Username with value {0} step ...")
+	public void setUsername(String username)
 	{
-		driverActions.textSet(email_fld,email);
+		getDriverActions().textSet(username_fld,username);
 	}
+	
+	@Step("set Password with value {0} step ...")
 	public void setPassword(String password)
 	{
-		driverActions.textSet(password_fld,password);
+		getDriverActions().textSet(password_fld,password);
 	}
+	
+	@Step("Press Login Button step ...")
 	public void pressLogin()
 	{
-		setEmail(fakeruser.getEmail());
-		setPassword(fakeruser.getPassword());
-		driverActions.clickOn(login_button_lnk);
+		setUsername(getFakerDataUser().getFirstname()+getFakerDataUser().getLastname());
+		setPassword(getFakerDataUser().getPassword());
+		getDriverActions().clickOn(login_btn);
 	}
-	public void pressLogin(String email,String password)
+	
+	@Step("Pass username : {0} , Password : {1} ,then Press Login Button step ...")
+	public void pressLogin(String user,String password)
 	{
-		setEmail(email);
+		setUsername(user);
 		setPassword(password);
-		driverActions.clickOn(login_button_lnk);
+		getDriverActions().clickOn(login_btn);
 	}
-	public String PageLoadedSuccessfully()
+	
+	@Step("Get alert text step ...")
+	public String GetAlertText()
 	{
-		return driverActions.textGet(wronglogin_txt);
+		return getDriverActions().textGet(green_alrt);
+	}
+	
+	@Step("Get Page header step ...")
+	public String GetPageHeader()
+	{
+		return getDriverActions().textGet(page_hdr);
 	}
 
 }
