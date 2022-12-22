@@ -1,20 +1,39 @@
-node {
-    def mvnHome
-    stage('Preparation') { // for display purposes
-        // Get some code from a GitHub repository
-        git 'https://github.com/Ahmed1891994/JAVAProject_Demo_framework2023.git'
-        // Get the Maven tool.
-        // ** NOTE: This 'M3' Maven tool must be configured
-        // **       in the global configuration.
-        mvnHome = tool 'MAVEN_HOME'
-    }
-    stage('Build') {
-        // Run the maven build
-        withEnv(["MVN_HOME=$mvnHome"]) {
+def mvnHome   
+pipeline {
+   agent any
+   stages{
+      stage('Setting Up Selenium Grid') {
+         steps{        
+			sh '''
+				docker version
+				docker info
+				docker compose version
+				mvn version
+			'''
+			sh 'docker system prune -a --volumes -f'
+			sh 'docker compose up -d --no-color --wait'
+            sh 'docker compose ps'
+			// Get some code from a GitHub repository
+			git 'https://github.com/Ahmed1891994/JAVAProject_Demo_framework2023.git'
+			// Get the Maven tool.
+			// ** NOTE: This 'M3' Maven tool must be configured
+			// **       in the global configuration.
+			mvnHome = tool 'MAVEN_HOME'
+         }
+      }
+      stage('Run Test') {
+         steps{
+           // Run the maven build
+			withEnv(["MVN_HOME=$mvnHome"]) {
                 bat(/"%MVN_HOME%\bin\mvn" clean test/)
         }
-    }
-    stage('Results') {
-       testNG(reportFilenamePattern: '**/testng-results.xml')
-    }
+         }
+      }
+      stage('Tearing Down Selenium Grid') {
+          steps {
+             testNG(reportFilenamePattern: '**/testng-results.xml')
+			 sh 'docker compose down'
+          }
+        }   
+   }
 }
