@@ -2,7 +2,7 @@ def mvnHome
 pipeline {
    agent any
    stages{
-      stage('Setting Up Selenium Grid') {
+      stage('Setting_Up Selenium Grid') {
          steps{        
 			sh '''
 				docker version
