@@ -20,10 +20,12 @@ pipeline {
       }
       stage('Run Test') {
          steps{
-         	// Get the Maven tool.
-			// ** NOTE: This 'M3' Maven tool must be configured
-			// **       in the global configuration.
-			mvnHome = tool 'MAVEN_HOME'
+         	script {
+	         	// Get the Maven tool.
+				// ** NOTE: This 'M3' Maven tool must be configured
+				// **       in the global configuration.
+				mvnHome = tool 'MAVEN_HOME'
+			}
            // Run the maven build
 			withEnv(["MVN_HOME=$mvnHome"]) {
                 bat(/"%MVN_HOME%\bin\mvn" clean test/)
