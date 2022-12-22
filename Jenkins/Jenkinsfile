@@ -15,18 +15,19 @@ pipeline {
             sh 'docker compose ps'
 			// Get some code from a GitHub repository
 			git 'https://github.com/Ahmed1891994/JAVAProject_Demo_framework2023.git'
-			// Get the Maven tool.
-			// ** NOTE: This 'M3' Maven tool must be configured
-			// **       in the global configuration.
-			mvnHome = tool 'MAVEN_HOME'
+			
          }
       }
       stage('Run Test') {
          steps{
+         	// Get the Maven tool.
+			// ** NOTE: This 'M3' Maven tool must be configured
+			// **       in the global configuration.
+			mvnHome = tool 'MAVEN_HOME'
            // Run the maven build
 			withEnv(["MVN_HOME=$mvnHome"]) {
                 bat(/"%MVN_HOME%\bin\mvn" clean test/)
-        }
+        	}
          }
       }
       stage('Tearing Down Selenium Grid') {
