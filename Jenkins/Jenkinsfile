@@ -4,12 +4,11 @@ pipeline {
    stages{
       stage('Setting_Up Selenium Grid') {
          steps{        
-			sh '''
-				docker version
-				docker info
-				docker compose version
-				mvn version
-			'''
+			
+			bat(/docker version/)
+			bat(/docker info/)
+			bat(/docker compose version/)
+			bat(/mvn version/)
 			sh 'docker system prune -a --volumes -f'
 			sh 'docker compose up -d --no-color --wait'
             sh 'docker compose ps'
