@@ -8,12 +8,12 @@ pipeline {
 			bat(/docker version/)
 			bat(/docker info/)
 			bat(/docker compose version/)
-			bat(/mvn version/)
-			sh 'docker system prune -a --volumes -f'
-			sh 'docker compose up -d --no-color --wait'
-            sh 'docker compose ps'
+			bat(/mvn --version/)
+			bat(/docker system prune -a --volumes -f/)
+			bat(/docker compose up -d --no-color --wait/)
+            bat(/docker compose ps/)
 			// Get some code from a GitHub repository
-			git 'https://github.com/Ahmed1891994/JAVAProject_Demo_framework2023.git'
+			//git 'https://github.com/Ahmed1891994/JAVAProject_Demo_framework2023.git'
 			
          }
       }
@@ -34,7 +34,7 @@ pipeline {
       stage('Tearing Down Selenium Grid') {
           steps {
              testNG(reportFilenamePattern: '**/testng-results.xml')
-			 sh 'docker compose down'
+			 bat(/docker compose down/)
           }
         }   
    }
