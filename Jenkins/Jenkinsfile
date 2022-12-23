@@ -9,7 +9,7 @@ pipeline {
 			bat(/docker info/)
 			bat(/docker compose version/)
 			bat(/mvn --version/)
-			bat(/docker system prune -a --volumes -f/)
+			//bat(/docker system prune -a --volumes -f/)
 			bat(/cd Docker && docker compose up -d --no-color --wait/)
             bat(/cd Docker && docker compose ps/)
 			// Get some code from a GitHub repository
@@ -22,7 +22,7 @@ pipeline {
          	script {
 	         	// Get the Maven tool.
 				// ** NOTE: This 'M3' Maven tool must be configured
-				// **       in the global configuration.
+				// ** in the global configuration.
 				mvnHome = tool 'MAVEN_HOME'
 			}
            // Run the maven build
