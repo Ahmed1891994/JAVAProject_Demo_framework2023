@@ -27,7 +27,7 @@ pipeline {
 			}
            // Run the maven build
 			withEnv(["MVN_HOME=$mvnHome"]) {
-                bat(/"%MVN_HOME%\bin\mvn" clean test/)
+                bat(/"%MVN_HOME%\bin\mvn" clean test -Denv=prod/)
         	}
          }
       }
