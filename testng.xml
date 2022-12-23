@@ -6,6 +6,17 @@
 			<class name="tests.FormAuthenticationTests" />
 		</classes>
 	</test> <!-- Test -->
+	<test name="Firefox Test">
+		<parameter name="browserName" value="Firefox" />
+		<classes>
+			<class name="tests.FormAuthenticationTests" />
+		</classes>
+	</test> <!-- Test -->
+	<test name="Edge Test">
+		<parameter name="browserName" value="Edge" />
+		<classes>
+			<class name="tests.FormAuthenticationTests" />
+		</classes>
+	</test> <!-- Test -->
 
-	
 </suite> <!-- Suite -->
