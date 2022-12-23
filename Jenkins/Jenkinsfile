@@ -5,7 +5,7 @@ pipeline {
       stage('Setting_Up Selenium Grid') {
          steps{        
 			
-			bat(/docker version/)
+			bat(/docker version/) 
 			bat(/docker info/)
 			bat(/docker compose version/)
 			bat(/mvn --version/)
